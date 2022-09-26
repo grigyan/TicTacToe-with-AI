@@ -16,35 +16,19 @@ public class Main {
                 String input1 = inputArr[1];
                 String input2 = inputArr[2];
 
-                switch (input1) {
-                    case "easy":
-                        player1 = new EasyAI('X');
-                        break;
-                    case "medium":
-                        player1 = new MediumAI('X');
-                        break;
-                    case "hard":
-                        player1 = new HardAI('X');
-                        break;
-                    default:
-                        player1 = new User('X');
-                        break;
-                }
+                player1 = switch (input1) {
+                    case "easy" -> new EasyAI('X');
+                    case "medium" -> new MediumAI('X');
+                    case "hard" -> new HardAI('X');
+                    default -> new User('X');
+                };
 
-                switch (input2) {
-                    case "easy":
-                        player2 = new EasyAI('O');
-                        break;
-                    case "medium":
-                        player2 = new MediumAI('O');
-                        break;
-                    case "hard":
-                        player2 = new HardAI('O');
-                        break;
-                    default:
-                        player2 = new User('O');
-                        break;
-                }
+                player2 = switch (input2) {
+                    case "easy" -> new EasyAI('O');
+                    case "medium" -> new MediumAI('O');
+                    case "hard" -> new HardAI('O');
+                    default -> new User('O');
+                };
 
                 new Game(player1, player2, "_________")
                         .playGame();
