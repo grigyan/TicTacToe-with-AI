@@ -1,5 +1,7 @@
 package tictactoe;
 
+import com.google.common.annotations.VisibleForTesting;
+
 public class Game {
     private Player playerOne;
     private Player playerTwo;
@@ -28,6 +30,11 @@ public class Game {
         }
     }
 
+    @VisibleForTesting
+    public char[][] getBoard() {
+        return this.board;
+    }
+
     private void fillBoard(String cells) {
         int index = 0;  // charAt(index) from cells string
         // fill the board
@@ -52,7 +59,8 @@ public class Game {
         System.out.print("---------\n");
     }
 
-    private boolean someoneWon(char[][] board) {
+    @VisibleForTesting
+    public boolean someoneWon(char[][] board) {
         // horizontally
         for (int i = 0; i < 3; i++) {
             if ((board[i][0] == 'X' && board[i][1] == 'X' && board[i][2] == 'X')) {
